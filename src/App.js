@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import NotifyContent, { notify } from './notify';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    function handleDanger() {
+        notify.show({
+            title: "Um erro ocorreu",
+            text:
+                "A criação do projeto 'Newsspass' não funcionou como esperado. O seguinte erro foi retornado pelo servidor: You have reached the limit of your current plan (Zenkit Projects). Please upgrade to continue.",
+            type: "danger",
+            schema: "dark"
+        });
+    }
+    return (
+        <>
+            <NotifyContent />
+            <div className="App">
+                <button onClick={handleDanger}>Danger</button>
+            </div>
+        </>
+
+    );
 }
 
 export default App;
