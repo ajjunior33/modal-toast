@@ -17,16 +17,16 @@ export const ContainerToast = styled.main`
 
 export const ContentToast = styled.div`
   ${(props) =>
-    props.schema === "dark" &&
-    `
+        props.schema === "dark" &&
+        `
       background-color: #1b1b1b;
       border: 1px solid #282828;
       color: white;
     `}
 
   ${(props) =>
-    props.schema === "light" &&
-    `
+        props.schema === "light" &&
+        `
       background-color: #ecf0f1;
       border: 1px solid #bdc3c7;
       color: #2c3e50;
@@ -47,28 +47,28 @@ export const ButtonToast = styled.button`
   cursor:pointer;
 
   ${(props) =>
-    props.schema === "light" &&
-    `
+        props.schema === "light" &&
+        `
       border-top: 1px solid #bdc3c7;
     `}
 
   ${(props) =>
-    props.schema === "dark" &&
-    `
+        props.schema === "dark" &&
+        `
     border-top: 1px solid #282828;
   `}
 
   ${(props) =>
-    props.bottom &&
-    css`
+        props.bottom &&
+        css`
       font-weight: bold;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
     `}
 
   ${(props) =>
-    props.type === "danger" &&
-    css`
+        props.type === "danger" &&
+        css`
       font-weight: bold;
       color: #c0392b;
       border-bottom-left-radius: 20px;
@@ -77,14 +77,14 @@ export const ButtonToast = styled.button`
   &:hover {
 
     ${(props) =>
-    props.schema === "light" &&
-    `
+        props.schema === "light" &&
+        `
         background-color:#bdc3c7aa;
     `}
 
   ${(props) =>
-    props.schema === "dark" &&
-    `
+        props.schema === "dark" &&
+        `
       background-color: #2c3e50aa;
   `}
   }
@@ -92,17 +92,18 @@ export const ButtonToast = styled.button`
 
 export const Title = styled.h1`
   font-size: 15px;
+  text-align:center;
 
 
   ${(props) =>
-    props.schema === "light" &&
-    `
+        props.schema === "light" &&
+        `
       color: #222;
     `}}
 
   ${(props) =>
-    props.schema === "dark" &&
-    `
+        props.schema === "dark" &&
+        `
     color: #eee;
   `}
 
