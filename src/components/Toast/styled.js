@@ -45,33 +45,42 @@ export const ButtonToast = styled.button`
   color: #007aff;
   cursor:pointer;
 
-  ${(props) =>
-        props.schema === "light" &&
-        `
-      border-top: 1px solid #bdc3c7;
+  ${(props) => props.schema === "light" && css`
+        border-top: 1px solid #bdc3c7;
     `}
 
-  ${(props) =>
-        props.schema === "dark" &&
-        `
+  ${(props) => props.schema === "dark" && css`
     border-top: 1px solid #282828;
   `}
 
-  ${(props) =>
-        props.bottom &&
-        css`
+  ${(props) => props.bottom && css`
       font-weight: bold;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
     `}
 
-  ${(props) =>
-        props.type === "danger" &&
-        css`
-      font-weight: bold;
-      color: #c0392b;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
+    ${props => props.type === "success" && css`
+        font-weight: bold;
+        color: #2ecc71;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    `}
+
+  ${(props) => props.type === "danger" && css`
+        font-weight: bold;
+        color: #c0392b;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+        ${(props) => props.schema === "light" && css`
+         border-top: 1px solid #bdc3c7;
+        `}
+
+        ${(props) => props.schema === "dark" && css`
+            border-top: 1px solid #282828;
+        `}
+
+
     `}
   &:hover {
 

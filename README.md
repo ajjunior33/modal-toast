@@ -36,20 +36,46 @@ Utilizando a chamada do modal:
 
  function handleModalDark() {
         notify.show({
-            title: "Um erro ocorreu",
-            text:
-                "A criação do projeto 'Newsspass' não funcionou como esperado. O seguinte erro foi retornado pelo servidor: You have reached the limit of your current plan (Zenkit Projects). Please upgrade to continue.",
+            title: "Titulo",
+            text:"Mensagem de texto",
+            type: "danger",
             type: "danger",
             schema: "dark"
         });
     }
     function handleModalLight() {
         notify.show({
-            title: "Um erro ocorreu",
-            text:
-                "A criação do projeto 'Newsspass' não funcionou como esperado. O seguinte erro foi retornado pelo servidor: You have reached the limit of your current plan (Zenkit Projects). Please upgrade to continue.",
+            title: "Titulo",
+            text:"Mensagem de texto",
+            type: "danger",
             type: "danger",
             schema: "light"
         });
     }
+```
+
+Fechando um modal
+
+```js
+  notify.hide();
+```
+
+Criando uma interação fetch
+
+```js
+
+
+ function handleModalLight() {
+        notify.show({
+            title: "Titulo",
+            text:"Mensagem de texto",
+            type: "danger",
+            schema: "light",
+            onProcess: () => {
+              console.log("Executando seu processo aqui")
+            },
+            onProcessName: "Nome a ser exibido no botão"
+        });
+    }
+
 ```

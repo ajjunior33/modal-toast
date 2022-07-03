@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from "react-dom";
+import React, { useEffect } from 'react';
+import ReactDOM from "react-dom/client";
 import {
     ContainerToast,
     ContentToast,
@@ -9,12 +9,8 @@ import {
     Text,
     FooterToast
 } from "./styled";
-const idDefault = "modal-toast";
-function Toast({ title, text, type, schema }) {
-    function handleClose() {
-        let target = document.getElementById(idDefault);
-        ReactDOM.unmountComponentAtNode(target);
-    }
+function Toast({ title, text, type, schema, onProcessName, onProcess, onClose }) {
+
     return (
         <ContainerToast>
             <ContentToast schema={schema}>
@@ -25,8 +21,13 @@ function Toast({ title, text, type, schema }) {
                 </SectionToast>
 
                 <FooterToast>
-                    <ButtonToast schema={schema} onClick={handleClose}>Cancelar</ButtonToast>
+                    <ButtonToast schema={schema} onClick={onClose}>Cancelar</ButtonToast>
 
+                    {(onProcess !== undefined) && (
+                        <>
+                            <ButtonToast type={type} bottom onClick={onProcess} >{onProcessName}</ButtonToast>
+                        </>
+                    )}
                 </FooterToast>
             </ContentToast>
         </ContainerToast>

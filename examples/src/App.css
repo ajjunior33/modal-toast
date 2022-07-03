@@ -1,10 +1,19 @@
 .App{
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
+}
+.buttonsList{
+  display: flex;
+  flex-direction: row;
+}
+img{
+  width: 380px;
+  height: 380px;
+  object-fit: cover;
 }
 
 .buttonClick{
