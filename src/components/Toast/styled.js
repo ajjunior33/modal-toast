@@ -31,10 +31,9 @@ export const ContentToast = styled.div`
       border: 1px solid #bdc3c7;
       color: #2c3e50;
     `}
-
-
-  max-width: 420px;
-  border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 20px;
 `;
 
 export const ButtonToast = styled.button`
