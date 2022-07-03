@@ -53,6 +53,3 @@ Utilizando a chamada do modal:
         });
     }
 ```
-
-## Contribuidores
-### Desenvolvedores
