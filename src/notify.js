@@ -1,21 +1,34 @@
 import React from 'react';
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
+import ReactDom from 'react-dom'
 import Toast from "./components/Toast";
 import Container from "./components/Container";
 
 const idDefault = "modal-toast";
+let root;
+function renderToast({ title, text, type, schema, onProcess, onProcessName }) {
 
-function renderToast({ title, text, type, schema }) {
-    let target = document.getElementById(idDefault);
-    ReactDOM.render(
-        <Toast text={text} type={type} title={title} schema={schema} />,
-        target
+    root = ReactDOM.createRoot(document.getElementById(idDefault));
+    root.render(
+        <>
+            <Toast
+                text={text}
+                type={type}
+                title={title}
+                schema={schema}
+                onProcess={onProcess}
+                onProcessName={onProcessName}
+                onClose={() => {
+                    root.unmount()
+                }}
+            />
+        </>
     );
 }
 
-function show({ title, text, type, schema }) {
+function show({ title, text, type, schema, onProcess, onProcessName }) {
     if (!document.getElementById(idDefault).hasChildNodes()) {
-        renderToast({ title, text, type, schema });
+        renderToast({ title, text, type, schema, onProcess, onProcessName });
 
         return true;
     }
@@ -24,8 +37,9 @@ function show({ title, text, type, schema }) {
 }
 
 function hide() {
-    let target = document.getElementById(idDefault);
-    ReactDOM.unmountComponentAtNode(target);
+
+    root.unmount();
+    return true;
 }
 
 export let notify = {
