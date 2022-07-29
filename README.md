@@ -79,3 +79,7 @@ Criando uma interação fetch
     }
 
 ```
+
+
+### Faça uma doação para ajudar meu projeto a seguir em frente
+[Doar agora](https://www.paypal.com/donate/?hosted_button_id=MTKLARS6AASYN)
