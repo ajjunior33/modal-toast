@@ -7,9 +7,10 @@ import {
     Title,
     SectionToast,
     Text,
-    FooterToast
+    FooterToast,
+    InputControl
 } from "./styled";
-function Toast({ title, text, type, schema, onProcessName, onProcess, onClose }) {
+function Toast({ title, text, type, schema, onProcessName, onProcess, onClose, inputToast }) {
 
     return (
         <ContainerToast>
@@ -19,15 +20,26 @@ function Toast({ title, text, type, schema, onProcessName, onProcess, onClose })
 
                     <Text schema={schema}>{text}</Text>
                 </SectionToast>
-
+                {inputToast && (
+                    inputToast.map(item => (
+                        <InputControl
+                            type={item.type}
+                            onChange={e => {
+                                item.state.current = e.target.value
+                            }}
+                            placeholder={item.placeholder}
+                            schema={schema}
+                        />
+                    ))
+                )}
                 <FooterToast>
-                    <ButtonToast schema={schema} onClick={onClose}>Cancelar</ButtonToast>
 
                     {(onProcess !== undefined) && (
                         <>
                             <ButtonToast type={type} bottom onClick={onProcess} >{onProcessName}</ButtonToast>
                         </>
                     )}
+                    <ButtonToast schema={schema} onClick={onClose}>Cancelar</ButtonToast>
                 </FooterToast>
             </ContentToast>
         </ContainerToast>

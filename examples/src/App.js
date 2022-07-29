@@ -2,7 +2,7 @@ import axios from 'axios';
 import './App.css';
 
 import NotifyContent, { notify } from '../../bin/notify';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
     const [image, setImage] = useState("");
     const [raca, setRaca] = useState("");
     const [description, setDescription] = useState("");
+    const userGit = useRef("")
 
     function handleModalDark() {
         notify.show({
@@ -45,6 +46,34 @@ function App() {
             onProcessName: "Quero ver um dog"
         });
     }
+
+    function handleModalInput() {
+        notify.show({
+            title: "Usuário do github",
+            text:
+                "Pegar imagem de perfil do github",
+            type: "success",
+            schema: "dark",
+            inputToast: [
+                {
+                    type: "text",
+                    placeholder: "username",
+                    state: userGit,
+                },
+
+            ],
+            onProcess: () => {
+                fetch(`https://api.github.com/users/${userGit.current}`)
+                    .then(responseJson => responseJson.json())
+                    .then(response => {
+                        setImage(response.avatar_url)
+                        setRaca(response.name)
+                        notify.hide();
+                    })
+            },
+            onProcessName: "Buscar"
+        });
+    }
     function handleModalLight() {
         notify.show({
             title: "Carregue um gatinho",
@@ -57,15 +86,10 @@ function App() {
                     .then(response => {
                         setImage(response.data[0].url)
 
-                        if (response.data[0].breeds[0] !== undefined) {
-                            setDescription(response.data[0].breeds[0].description)
-                            setRaca(response.data[0].breeds[0].name)
-                        } else {
-                            setRaca("");
-                        }
                         notify.hide();
                     })
                     .catch(err => {
+                        console.log(err);
                         notify.hide();
 
                         notify.show({
@@ -90,6 +114,7 @@ function App() {
                 <div className="buttonsList">
                     <button className='buttonClick' onClick={handleModalDark}>Click me to Dark</button>
                     <button className='buttonClick' onClick={handleModalLight}>Click me to Ligth</button>
+                    <button className='buttonClick' onClick={handleModalInput}>Click me to for load input</button>
                 </div>
             </div>
 

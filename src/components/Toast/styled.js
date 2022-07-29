@@ -34,6 +34,39 @@ export const ContentToast = styled.div`
     width: 100%;
     max-width: 420px;
     border-radius: 20px;
+
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+`;
+
+export const InputControl = styled.input`
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    padding: 12px 24px;
+    border:1px solid #007aff;
+    font-size: 1em;
+    margin: 12px auto;
+    &::placeholder{
+        font-size: 1em;
+    }
+
+    ${(props) =>
+        props.schema === "dark" &&
+        `
+      background-color: #1b1b1b;
+      border: 1px solid #007aff;
+      color: white;
+    `}
+
+  ${(props) =>
+        props.schema === "light" &&
+        `
+      background-color: #ecf0f1;
+      border: 1px solid #bdc3c7;
+      color: #2c3e50;
+    `}
 `;
 
 export const ButtonToast = styled.button`
@@ -44,6 +77,8 @@ export const ButtonToast = styled.button`
   font-size: 14px;
   color: #007aff;
   cursor:pointer;
+    max-width: 420px;
+    min-width: 100%;
 
   ${(props) => props.schema === "light" && css`
         border-top: 1px solid #bdc3c7;
@@ -84,6 +119,8 @@ export const ButtonToast = styled.button`
     `}
   &:hover {
 
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     ${(props) =>
         props.schema === "light" &&
         `
