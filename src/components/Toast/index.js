@@ -13,7 +13,6 @@ import {
     ContentCenter
 } from "./styled";
 function Toast({ cancelButtonTitle = "Cancelar", imgSrc, title, text, type, schema, onProcessName, onProcess, onClose, inputToast }) {
-    console.log(imgSrc);
     return (
         <ContainerToast>
             <ContentToast schema={schema}>
