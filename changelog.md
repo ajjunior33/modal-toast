@@ -7,3 +7,8 @@
 # `0.1.7`
 
 - Usar um input no modal para poder fazer uma requisição HTTP.
+
+# `0.1.8`
+
+- Adicionar imagem no modal
+- Adicionar select no modal
