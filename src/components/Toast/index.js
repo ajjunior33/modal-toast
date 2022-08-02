@@ -39,16 +39,18 @@ function Toast({
                     <Title schema={schema}>{title}</Title>
                     <Text schema={schema}>{text}</Text>
 
-                    <ContentCenter>
-                        <SelectToast
-                            onChange={event => selectOptions.onChange(event.target.value)}
-                            value={selectOptions.isValue}
-                            schema={schema}>
-                            {selectOptions.options.map(select => (
-                                <option>{select}</option>
-                            ))}
-                        </SelectToast>
-                    </ContentCenter>
+                    {selectOptions && (
+                        <ContentCenter>
+                            <SelectToast
+                                onChange={event => selectOptions.onChange(event.target.value)}
+                                value={selectOptions.isValue}
+                                schema={schema}>
+                                {selectOptions.options.map(select => (
+                                    <option>{select}</option>
+                                ))}
+                            </SelectToast>
+                        </ContentCenter>
+                    )}
                 </SectionToast>
                 {inputToast && (
                     inputToast.map(item => (
