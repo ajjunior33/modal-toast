@@ -5,12 +5,17 @@ import NotifyContent, { notify } from '../../bin/notify';
 import { useRef, useState } from 'react';
 
 
+const listOptions = [
+    "Apple", "Microsoft", "Samsung"
+]
+
 function App() {
 
     const [image, setImage] = useState("");
     const [raca, setRaca] = useState("");
     const [description, setDescription] = useState("");
     const userGit = useRef("")
+    const [optionsState, setOptionState] = useState("");
 
     function handleModalDark() {
         notify.show({
@@ -62,6 +67,11 @@ function App() {
                 },
 
             ],
+            selectOptions: {
+                isValue: optionsState,
+                onChange: setOptionState,
+                options: ["Apple", "Microsoft", "Samsung"]
+            },
             onProcess: () => {
                 fetch(`https://api.github.com/users/${userGit.current}`)
                     .then(responseJson => responseJson.json())
@@ -118,6 +128,15 @@ function App() {
                 <img src={image} alt="" style={{ border: "none", outline: "none", borderRadius: 8 }} />
                 <h4>{raca}</h4>
                 <p>{description}</p>
+
+                <select className='select' value={optionsState} onChange={event => setOptionState(event.target.value)}>
+                    {listOptions.map(item => (
+                        <option>{item}</option>
+                    ))}
+                </select>
+                <button className='buttonClick' onClick={() => {
+                    console.log(optionsState)
+                }}>Enviar select</button>
                 <div className="buttonsList">
                     <button className='buttonClick' onClick={handleModalDark}>Click me to Dark</button>
                     <button className='buttonClick' onClick={handleModalLight}>Click me to Ligth</button>

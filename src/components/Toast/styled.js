@@ -184,3 +184,24 @@ export const ContentCenter = styled.div`
     align-items:center;
     
 `
+
+export const SelectToast = styled.select`
+    padding: 12px 24px;
+    border-radius:8px;
+    width: 100%;
+    max-width: 350px;
+    font-size: .8em;
+    font-weight: bold;
+    ${(props) => props.schema === "light" && css`
+        
+      background-color: #ecf0f1;
+      border: 1px solid #bdc3c7;
+      color: #2c3e50;
+    `}
+
+    ${(props) => props.schema === "dark" && css`
+        background-color: #1b1b1b;
+        border: 1px solid #007aff;
+        color: white;
+    `}
+`;

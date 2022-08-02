@@ -6,7 +6,7 @@ import Container from "./components/Container";
 
 const idDefault = "modal-toast";
 let root;
-function renderToast({ imgSrc, title, text, type, schema, onProcess, onProcessName, inputToast, cancelButtonTitle }) {
+function renderToast({ selectOptions, imgSrc, title, text, type, schema, onProcess, onProcessName, inputToast, cancelButtonTitle }) {
 
     root = ReactDOM.createRoot(document.getElementById(idDefault));
     root.render(
@@ -21,6 +21,7 @@ function renderToast({ imgSrc, title, text, type, schema, onProcess, onProcessNa
                 inputToast={inputToast}
                 cancelButtonTitle={cancelButtonTitle}
                 imgSrc={imgSrc}
+                selectOptions={selectOptions}
                 onClose={() => {
                     root.unmount()
                 }}
@@ -29,9 +30,9 @@ function renderToast({ imgSrc, title, text, type, schema, onProcess, onProcessNa
     );
 }
 
-function show({ imgSrc, title, text, type, schema, onProcess, onProcessName, inputToast, cancelButtonTitle }) {
+function show({ selectOptions, imgSrc, title, text, type, schema, onProcess, onProcessName, inputToast, cancelButtonTitle }) {
     if (!document.getElementById(idDefault).hasChildNodes()) {
-        renderToast({ imgSrc, title, text, type, schema, onProcess, onProcessName, inputToast, cancelButtonTitle });
+        renderToast({ imgSrc, selectOptions, title, text, type, schema, onProcess, onProcessName, inputToast, cancelButtonTitle });
 
         return true;
     }

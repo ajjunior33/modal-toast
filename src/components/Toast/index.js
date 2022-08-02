@@ -10,9 +10,22 @@ import {
     FooterToast,
     ImageToast,
     InputControl,
-    ContentCenter
+    ContentCenter,
+    SelectToast
 } from "./styled";
-function Toast({ cancelButtonTitle = "Cancelar", imgSrc, title, text, type, schema, onProcessName, onProcess, onClose, inputToast }) {
+function Toast({
+    cancelButtonTitle = "Cancelar",
+    imgSrc,
+    title,
+    text,
+    type,
+    schema,
+    onProcessName,
+    onProcess,
+    onClose,
+    inputToast,
+    selectOptions
+}) {
     return (
         <ContainerToast>
             <ContentToast schema={schema}>
@@ -22,8 +35,20 @@ function Toast({ cancelButtonTitle = "Cancelar", imgSrc, title, text, type, sche
                             <ImageToast src={imgSrc} alt={title} />
                         </ContentCenter>
                     )}
+
                     <Title schema={schema}>{title}</Title>
                     <Text schema={schema}>{text}</Text>
+
+                    <ContentCenter>
+                        <SelectToast
+                            onChange={event => selectOptions.onChange(event.target.value)}
+                            value={selectOptions.isValue}
+                            schema={schema}>
+                            {selectOptions.options.map(select => (
+                                <option>{select}</option>
+                            ))}
+                        </SelectToast>
+                    </ContentCenter>
                 </SectionToast>
                 {inputToast && (
                     inputToast.map(item => (
