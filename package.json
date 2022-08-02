@@ -1,6 +1,6 @@
 {
   "name": "modal-toast",
-  "version": "0.1.8",
+  "version": "0.1.8.1",
   "private": false,
   "main": "bin/notify.js",
   "author": "André Souza<andresouza@meraki.dev.br>",
