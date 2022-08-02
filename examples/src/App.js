@@ -68,10 +68,17 @@ function App() {
                     .then(response => {
                         setImage(response.avatar_url)
                         setRaca(response.name)
+                        console.log(response.avatar_url)
                         notify.hide();
+                        notify.show({
+                            title: response.name,
+                            imgSrc: response.avatar_url,
+                            schema: "dark"
+                        })
                     })
             },
-            onProcessName: "Buscar"
+            onProcessName: "Buscar",
+            cancelButtonTitle: "Fechar",
         });
     }
     function handleModalLight() {

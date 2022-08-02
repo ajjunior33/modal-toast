@@ -80,6 +80,7 @@ export const ButtonToast = styled.button`
     max-width: 420px;
     min-width: 100%;
 
+  
   ${(props) => props.schema === "light" && css`
         border-top: 1px solid #bdc3c7;
     `}
@@ -117,6 +118,7 @@ export const ButtonToast = styled.button`
 
 
     `}
+
   &:hover {
 
     border-bottom-left-radius: 20px;
@@ -167,3 +169,18 @@ export const FooterToast = styled.footer`
   justify-content: center;
   align-items: center;
 `;
+export const ImageToast = styled.img`
+    max-width:300px;
+    width: 100%;
+    margin: 0 auto;
+    object-fit: contain;
+`
+
+
+export const ContentCenter = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    
+`

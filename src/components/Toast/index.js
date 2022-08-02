@@ -8,16 +8,22 @@ import {
     SectionToast,
     Text,
     FooterToast,
-    InputControl
+    ImageToast,
+    InputControl,
+    ContentCenter
 } from "./styled";
-function Toast({ title, text, type, schema, onProcessName, onProcess, onClose, inputToast }) {
-
+function Toast({ cancelButtonTitle = "Cancelar", imgSrc, title, text, type, schema, onProcessName, onProcess, onClose, inputToast }) {
+    console.log(imgSrc);
     return (
         <ContainerToast>
             <ContentToast schema={schema}>
                 <SectionToast schema={schema}>
+                    {imgSrc && (
+                        <ContentCenter>
+                            <ImageToast src={imgSrc} alt={title} />
+                        </ContentCenter>
+                    )}
                     <Title schema={schema}>{title}</Title>
-
                     <Text schema={schema}>{text}</Text>
                 </SectionToast>
                 {inputToast && (
@@ -39,7 +45,7 @@ function Toast({ title, text, type, schema, onProcessName, onProcess, onClose, i
                             <ButtonToast type={type} bottom onClick={onProcess} >{onProcessName}</ButtonToast>
                         </>
                     )}
-                    <ButtonToast schema={schema} onClick={onClose}>Cancelar</ButtonToast>
+                    <ButtonToast schema={schema} onClick={onClose}>{cancelButtonTitle}</ButtonToast>
                 </FooterToast>
             </ContentToast>
         </ContainerToast>
